@@ -1,0 +1,66 @@
+-- there is slightly difference between data in the tables and this data
+USE RestaurantDB;
+GO
+
+-- Insert Data into Person
+INSERT INTO Person (FullName, Email, Password, Role, ShiftTimings, Image, AccountStatus, CreateBy, UpdateBy, IsActive)
+VALUES 
+('John Doe', 'john.doe@email.com', 'Pass@123', 'Customer', NULL, NULL, 'Active', 'Admin', 'Admin', 1),
+('Alice Smith', 'alice.smith@email.com', 'Pass@456', 'Customer', NULL, NULL, 'Active', 'Admin', 'Admin', 1),
+('Robert Johnson', 'robert.j@email.com', 'Pass@789', 'Chef', '9 AM - 5 PM', NULL, 'Active', 'Admin', 'Admin', 1),
+('Emily Davis', 'emily.d@email.com', 'Pass@101', 'Waiter', '12 PM - 8 PM', NULL, 'Active', 'Admin', 'Admin', 1);
+GO
+
+-- Insert Data into Menu
+INSERT INTO Menu (ItemName, Category, Price, Availability, Discount, Image, CreateBy, UpdateBy, IsActive)
+VALUES 
+('Margherita Pizza', 'Pizza', 8.99, 1, 0.00, NULL, 'Admin', 'Admin', 1),
+('Cheeseburger', 'Burgers', 6.50, 1, 0.50, NULL, 'Admin', 'Admin', 1),
+('Caesar Salad', 'Salads', 5.99, 1, 0.00, NULL, 'Admin', 'Admin', 1),
+('Chocolate Cake', 'Desserts', 4.50, 1, 0.00, NULL, 'Admin', 'Admin', 1);
+GO
+
+-- Insert Data into Order
+INSERT INTO [Order] (TableNumber, CustomerID, OrderStatus, TotalAmount, ListOfItems, CreateBy, UpdateBy, IsActive)
+VALUES 
+(5, 1, 'Completed', 15.49, 'Margherita Pizza, Caesar Salad', 'Alice Smith', 'Admin', 1),
+(3, 2, 'Pending', 6.50, 'Cheeseburger', 'John Doe', 'Admin', 1),
+(7, 1, 'Completed', 4.50, 'Chocolate Cake', 'Alice Smith', 'Admin', 1);
+GO
+
+-- Insert Data into Feedback
+INSERT INTO Feedback (CustomerID, OrderID, RatingAmount, Comments, CreateBy, UpdateBy, IsActive)
+VALUES 
+(1, 1, 5, 'Amazing food and service!', 'John Doe', 'Admin', 1),
+(2, 2, 4, 'Burger was good, but slightly cold.', 'Alice Smith', 'Admin', 1),
+(1, 3, 5, 'Loved the dessert!', 'John Doe', 'Admin', 1);
+GO
+
+-- Insert Data into Reservation
+INSERT INTO Reservation (CustomerID, TableNumber, Status, CreateBy, UpdateBy, IsActive)
+VALUES 
+(1, 10, 'Confirmed', 'John Doe', 'Admin', 1),
+(2, 5, 'Pending', 'Alice Smith', 'Admin', 1);
+GO
+
+-- Insert Data into Manage
+INSERT INTO Manage (PersonID, MenuID, CreateBy, UpdateBy, IsActive)
+VALUES 
+(3, 1, 'Admin', 'Admin', 1),  
+(3, 2, 'Admin', 'Admin', 1),  
+(3, 3, 'Admin', 'Admin', 1);
+GO
+
+-- Insert Data into CreateOrder
+INSERT INTO CreateOrder (PersonID, OrderID, CreateBy, UpdateBy, IsActive)
+VALUES 
+(1, 1, 'John Doe', 'Admin', 1),
+(2, 2, 'Alice Smith', 'Admin', 1);
+GO
+
+-- Insert Data into CreateReservation
+INSERT INTO CreateReservation (PersonID, ReservationID, CreateBy, UpdateBy, IsActive)
+VALUES 
+(1, 1, 'John Doe', 'Admin', 1),
+(2, 2, 'Alice Smith', 'Admin', 1);
+GO
